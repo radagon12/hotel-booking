@@ -21,7 +21,7 @@ const List = () => {
     `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
 
-  console.log(data)
+  // console.log(data)
 
   const handleClick = () => {
     reFetch();

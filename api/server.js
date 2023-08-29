@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config({ path: "./.env" });
 const express = require("express");
 const app = express();
 const roomRoutes = require("./routes/room");
@@ -14,6 +14,8 @@ app.use(cookieParser());
 app.listen(8800, () => {
   console.log("listening on port 8800");
 });
+
+// console.log(process.env.MONGO)
 
 mongoose
   .connect(process.env.MONGO)

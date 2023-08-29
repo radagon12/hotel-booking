@@ -41,6 +41,8 @@ exports.login = async (req, res, next) => {
     if (!isPasswordCorrect)
       return next(createError(400, `Password is incorrect`));
 
+    // console.log(process.env.JWT_SECRET)
+
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
       process.env.JWT_SECRET
@@ -50,6 +52,7 @@ exports.login = async (req, res, next) => {
     res
       .cookie("access_token", token, {
         httpOnly: true,
+        secure: true,
       })
       .status(200)
       .json({ details: {...otherDetails}, __v: undefined, isAdmin });
