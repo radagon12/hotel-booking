@@ -33,8 +33,17 @@ const Register = () =>{
             alert("Something went wrong!")
         }
 
-        alert("Successful Registration!")
-        navigate('/login')
+        dispatch({type:"LOGIN_START"})
+        try{
+
+            const res = await axios.post("/api/auth/login", credentials);
+            dispatch({type:"LOGIN_SUCCESS", payload: res.data.details})
+            navigate("/")
+        }catch(err)
+        {
+            alert("wrong credentials")
+            dispatch({type:"LOGIN_FAILURE", payload: err.response.data})
+        }
     }
 
     return (
