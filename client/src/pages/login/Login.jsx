@@ -28,6 +28,7 @@ const Login = () =>{
             navigate("/")
         }catch(err)
         {
+            alert("wrong credentials")
             dispatch({type:"LOGIN_FAILURE", payload: err.response.data})
         }
     }
