@@ -32,7 +32,7 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("/auth/register", newUser);
+      await axios.post("/api/auth/register", newUser);
     } catch (err) {
       console.log(err);
     }

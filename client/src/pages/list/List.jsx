@@ -2,7 +2,7 @@ import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
@@ -18,11 +18,10 @@ const List = () => {
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+    `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
   );
 
-  // console.log(data)
-
+  
   const handleClick = () => {
     reFetch();
   };
@@ -37,7 +36,10 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <input placeholder={destination} type="text"
+                value={destination}
+                onChange={(e) => setDestination(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))}
+               />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -109,13 +111,12 @@ const List = () => {
           </div>
           <div className="listResult">
             {loading ? (
-              "loading ..."
+              "loading"
             ) : (
               <>
-                {data && (data.length ?
-                  data.map((item) => (
-                    <SearchItem item={item} key={item._id} />
-                  )) : `Sorry , there are no items found :(`)}
+                {data.map((item) => (
+                  <SearchItem item={item} key={item._id} />
+                ))}
               </>
             )}
           </div>

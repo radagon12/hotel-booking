@@ -6,6 +6,8 @@ const useFetch = (url) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
+  url = `api${url}`
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -18,7 +20,7 @@ const useFetch = (url) => {
       setLoading(false);
     };
     fetchData();
-  }, [url]);
+  }, []);
 
   const reFetch = async () => {
     setLoading(true);

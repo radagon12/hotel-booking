@@ -8,6 +8,8 @@ const useFetch = (url) => {
 
   // console.log(url)
 
+  url = `/api${url}`;
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);

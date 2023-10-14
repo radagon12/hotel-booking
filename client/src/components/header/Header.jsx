@@ -101,7 +101,13 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="Where are you going?"
                   className="headerSearchInput"
-                  onChange={(e) => setDestination(e.target.value)}
+                  autoCapitalize="words"
+                  onChange={(e) => setDestination(() => {
+                    // const t = e.target.value;
+                    // console.log(destination);
+
+                    return e.target.value = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
+                  })}
                 />
               </div>
               <div className="headerSearchItem">
