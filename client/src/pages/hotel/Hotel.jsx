@@ -21,9 +21,12 @@ const Hotel = () => {
   const location = useLocation().pathname;
   const id = location.split("/")[2];
 
+  // const {user} = useContext(AuthContext)
+
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
-  const [openModal, setOpenModal] = useState(true);
+  const { user } = useContext(AuthContext);
+  const [openModal, setOpenModal] = useState((user ? true : false));
 
   const { data, loading, error } = useFetch(`/hotels/${id}`);
 
@@ -66,7 +69,7 @@ const Hotel = () => {
     setOpen(true);
   };
 
-  const { user } = useContext(AuthContext);
+  
   const navigate = useNavigate();
 
   const handleClick = () =>
