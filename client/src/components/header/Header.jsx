@@ -95,8 +95,6 @@ const Header = ({ type }) => {
                   className="headerSearchInput"
                   autoCapitalize="words"
                   onChange={(e) => setDestination(() => {
-                    // const t = e.target.value;
-                    // console.log(destination);
 
                     return e.target.value = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
                   })}
