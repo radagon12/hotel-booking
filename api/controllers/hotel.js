@@ -109,10 +109,8 @@ exports.getHotelRooms = async (req, res , next) =>
 {
   try {
     const hotel = await Hotel.findOne({ _id: req.params.id });
-    // console.log(hotel.rooms);
 
     const list = hotel.rooms && await Promise.all(hotel.rooms.map(room =>{
-      // console.log(Room.findById(room))
       return Room.findById(room);
     }))
 
