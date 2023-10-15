@@ -1,12 +1,13 @@
 import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
+import { SearchContext } from "../../context/SearchContext";
 
 const List = () => {
   const location = useLocation();
@@ -17,13 +18,18 @@ const List = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
+  const navigate = useNavigate();
+
+  const {dispatch} = useContext(SearchContext);
+
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
+    `/hotels?city=${destination}&min=${min || -1 }&max=${max || 100000}`
   );
 
   
   const handleClick = () => {
-    reFetch();
+    dispatch({type:"NEW_SEARCH", payload: {destination,dates,options}})
+    navigate("/hotels", { state: { destination, dates, options } });
   };
 
   return (
