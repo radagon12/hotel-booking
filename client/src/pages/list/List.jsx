@@ -55,6 +55,7 @@ const List = () => {
               )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
               {openDate && (
                 <DateRange
+                  editableDateInputs={true}
                   onChange={(item) => setDates([item.selection])}
                   minDate={new Date()}
                   ranges={dates}
