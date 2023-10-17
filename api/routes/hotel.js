@@ -13,7 +13,7 @@ router.get("/countByCity", hotelController.countByCity)
 router.get("/countByType", hotelController.countByType)
 router.get("/room/:id", hotelController.getHotelRooms)
 
-router
+router 
   .route("/:id")
   .get(hotelController.getHotel)
   .put(verifyAdmin, hotelController.updateHotel)
