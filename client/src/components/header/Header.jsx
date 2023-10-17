@@ -96,7 +96,7 @@ const Header = ({ type }) => {
                   autoCapitalize="words"
                   onChange={(e) => setDestination(() => {
 
-                    return e.target.value = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
+                    return e.target.value = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1).toLowerCase();
                   })}
                 />
               </div>

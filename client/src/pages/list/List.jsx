@@ -45,7 +45,7 @@ const List = () => {
               <label>Destination</label>
               <input placeholder={destination} type="text"
                 value={destination}
-                onChange={(e) => setDestination(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))}
+                onChange={(e) => setDestination(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1).toLowerCase())}
                />
             </div>
             <div className="lsItem">
