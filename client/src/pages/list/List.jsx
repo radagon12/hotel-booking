@@ -28,6 +28,7 @@ const List = () => {
 
   
   const handleClick = () => {
+    reFetch(`/hotels?city=${destination}&min=${min || -1 }&max=${max || 100000}`)
     dispatch({type:"NEW_SEARCH", payload: {destination,dates,options}})
     navigate("/hotels", { state: { destination, dates, options } });
   };
